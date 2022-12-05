@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>train-reservation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container-fluid">
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">기차 매표소 시스템</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link m-3"
+                  data-bs-target="#exampleModal"
+                  data-bs-toggle="modal"
+                  >열차 일정 추가하기</a
+                >
+                <div
+                  aria-hidden="true"
+                  aria-labelledby="exampleModalLabel"
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">일정 추가하기</div>
+                      <form class="p-5">
+                        <div class="mb-3">
+                          <label for="InputDeparture" class="form-label"
+                            >출발지</label
+                          >
+                          <select
+                            id="InputDeparture"
+                            class="form-select"
+                            aria-label="Default select example"
+                          >
+                            <option selected>지역을 선택하시오.</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="InputDepartureTime" class="form-label">
+                            출발 시간
+                          </label>
+                          <input
+                            class="form-control"
+                            type="datetime-local"
+                            id="InputDepartureTime"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="InputArrival" class="form-label"
+                            >도착지</label
+                          >
+                          <select
+                            id="InputArrival"
+                            class="form-select"
+                            aria-label="Default select example"
+                          >
+                            <option selected>지역을 선택하시오.</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="InputArrivalTime" class="form-label">
+                            출발 시간
+                          </label>
+                          <input
+                            class="form-control"
+                            type="datetime-local"
+                            id="InputArrivalTime"
+                          />
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="InputCarriage" class="form-label"
+                            >열차 번호</label
+                          >
+                          <input
+                            type="number"
+                            id="InputCarriage"
+                            class="form-control"
+                          />
+                        </div>
+
+                        <button
+                          id="InputScheduleButton"
+                          type="submit"
+                          class="btn btn-primary"
+                          data-bs-dismiss="modal"
+                        >
+                          확인
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link m-3"
+                  data-bs-target="#exampleModal1"
+                  data-bs-toggle="modal"
+                  >운행 지역 추가하기</a
+                >
+                <div
+                  aria-hidden="true"
+                  aria-labelledby="exampleModalLabel1"
+                  class="modal fade"
+                  id="exampleModal1"
+                  tabindex="-1"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">지역 추가하기</div>
+                      <form class="p-5">
+                        <div class="mb-3">
+                          <label for="InputArea" class="form-label"
+                            >지역 이름</label
+                          >
+                          <input
+                            id="InputArea"
+                            type="text"
+                            class="form-control"
+                          />
+                        </div>
+                        <button
+                          id="InputAreaButton"
+                          type="submit"
+                          class="btn btn-primary"
+                          data-bs-dismiss="modal"
+                        >
+                          확인
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="row">
+        <div class="col-lg-2 col-md-1 col-sm-0"></div>
+        <div class="col">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">출발지</th>
+                <th scope="col">출발지 시간</th>
+                <th scope="col">도착지</th>
+                <th scope="col">도착시간</th>
+                <th scope="col">열차 번호</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="col-lg-2 col-md-1 col-sm-0"></div>
+      </div>
+    </main>
+    <script src="../js/index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
